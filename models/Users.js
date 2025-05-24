@@ -1,15 +1,15 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.userSchema(
+const userSchema = new mongoose.Schema(
   {
-    _id: { typeof: String, required: true },
-    name: { typeof: String, required: true },
-    emall: { typeof: String, required: true, unique: true },
-    imageURL: { typeof: String, required: true },
-    cartItems: { typeof: Object, default: {} },
+    _id: { type: String, required: true },
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    imageURL: { type: String, required: true },
+    cartItems: { type: Object, default: {} },
   },
   { minimize: false }
 );
 
-const User = mongoose.models.user || mongoose.models("user", userSchema);
+const User = mongoose.models.user || mongoose.model("user", userSchema);
 export default User;
