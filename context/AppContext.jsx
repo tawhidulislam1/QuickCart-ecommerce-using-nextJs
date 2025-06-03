@@ -25,7 +25,18 @@ export const AppContextProvider = (props) => {
     const { getToken } = useAuth()
 
     const fetchProductData = async () => {
-        setProducts(productsDummyData)
+        try {
+            const { data } = await axios.get("/api/product/list")
+            if (data.success) {
+                setProducts(data.products)
+            } else {
+                toast.error(data.message)
+            }
+
+        } catch (error) {
+            toast.error(error.message)
+
+        }
     }
 
     const fetchUserData = async () => {
