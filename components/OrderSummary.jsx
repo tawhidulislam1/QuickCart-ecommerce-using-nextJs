@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 const OrderSummary = () => {
 
-  const { currency, router, getCartCount, getCartAmount, getToken, user, cartItems, SetCartItems } = useAppContext()
+  const { currency, router, getCartCount, getCartAmount, getToken, user, cartItems, setCartItems } = useAppContext()
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -57,8 +57,8 @@ const OrderSummary = () => {
       })
       if (data.success) {
         toast.success("Order Is Success")
-        SetCartItems({})
         router.push('/order-placed')
+        setCartItems({})
       }
       else {
         toast.error(data.message)
