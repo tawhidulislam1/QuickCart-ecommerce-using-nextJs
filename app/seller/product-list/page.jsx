@@ -31,6 +31,9 @@ const ProductList = () => {
 
     }
   }
+  const handleDelete= (id)=>{
+    console.log(id);
+  }
 
   useEffect(() => {
     if (user) {
@@ -47,12 +50,12 @@ const ProductList = () => {
           <table className=" table-fixed w-full overflow-hidden">
             <thead className="text-gray-900 text-sm text-left">
               <tr>
-                <th className="w-2/3 md:w-2/5 px-4 py-3 font-medium truncate">Product</th>
+                <th className="w-2/3 md:w-2/5 px-4 py-3 font-medium truncate text-ce">Product</th>
                 <th className="px-4 py-3 font-medium truncate max-sm:hidden">Category</th>
                 <th className="px-4 py-3 font-medium truncate">
                   Price
                 </th>
-                <th className="px-4 py-3 font-medium truncate max-sm:hidden">Action</th>
+                <th className="px-4 py-3 font-medium truncate max-sm:hidden text-center">Action</th>
               </tr>
             </thead>
             <tbody className="text-sm text-gray-500">
@@ -75,14 +78,23 @@ const ProductList = () => {
                   <td className="px-4 py-3 max-sm:hidden">{product.category}</td>
                   <td className="px-4 py-3">${product.offerPrice}</td>
                   <td className="px-4 py-3 max-sm:hidden">
-                    <button onClick={() => router.push(`/product/${product._id}`)} className="flex items-center gap-1 px-1.5 md:px-3.5 py-2 bg-orange-600 text-white rounded-md">
+                    {/* <button onClick={() => router.push(`/product/${product._id}`)} className="flex items-center gap-1 px-1.5 md:px-3.5 py-2 bg-orange-600 text-white rounded-md">
                       <span className="hidden md:block">Visit</span>
                       <Image
                         className="h-3.5"
                         src={assets.redirect_icon}
                         alt="redirect_icon"
                       />
-                    </button>
+                    </button> */}
+                    <div>
+                      <button className="btn btn-primary mr-1 text-white">Edit</button>
+                      <button
+                        className="btn btn-warning text-white ml-1"
+                        onClick={() => handleDelete(product._id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
